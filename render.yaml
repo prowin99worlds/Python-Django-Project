@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: my-django-app  # change to your preferred app name
+    name: django_app  # change to your preferred app name
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn myproject.wsgi:application
