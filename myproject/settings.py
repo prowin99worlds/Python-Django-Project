@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$#)0^0=wcyz2c+)mc^2v&m)w-s7ai=#--0a3rzt-m&qv)a+l=z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_app',
-    'example',
+    'whitenoise.runserver_nostatic',  # Use Whitenoise for static files
 ]
 
 MIDDLEWARE = [
@@ -124,6 +124,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     'C:/Users/ADMIN/Documents/New Django Project/soft-ui-design-system-main/assets'
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
