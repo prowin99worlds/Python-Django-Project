@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: my-django-app  # change to your app name
+    name: my-django-app
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn myproject.wsgi:application
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py migrate
+      python manage.py collectstatic --noinput
     envVars:
       - key: DATABASE_URL
         fromDatabase:
