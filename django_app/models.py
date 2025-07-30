@@ -5,7 +5,7 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    image = models.ImageField(upload_to='blog_images/')
+    image = models.ImageField(null=True, blank=True, upload_to=('blog_images/'), default='blog_images/129780.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
